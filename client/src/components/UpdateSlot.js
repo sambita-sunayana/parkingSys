@@ -36,7 +36,7 @@ const UpdateSlot = () => {
 
   useEffect(() => {
     axios
-      .get(`https://parking-system-j82e.onrender.com/api/lots/${id}`)
+      .get(`https://parkingsystem-8xdu.onrender.com/api/lots/${id}`)
       .then((res) => {
         setSlot(res.data);
       })
@@ -60,7 +60,7 @@ const UpdateSlot = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`https://parking-system-j82e.onrender.com/api/lots/${id}`, slot)
+      .put(`https://parkingsystem-8xdu.onrender.com/api/lots/${id}`, slot)
       .then(() => {
         enqueueSnackbar("Slot updated successfully!", { variant: "success" });
         navigate(`/slot-detail/${id}`);

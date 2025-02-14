@@ -6,6 +6,7 @@ const Footer = () => (
   <Box 
     component="footer" 
     sx={{
+      // position: 'fixed', // Fixed position
       bottom: 0,
       bgcolor: 'background.paper',
       color: 'text.secondary',
@@ -17,12 +18,12 @@ const Footer = () => (
     }}
   >
     <Typography variant="h6" gutterBottom>
-      Built with ❤️ SMITA
+      Built with ❤️ 
     </Typography>
     <Typography variant="body2" sx={{ mt: 2 }}>
-      © {new Date().getFullYear()} Smita  | All Rights Reserved
+      © {new Date().getFullYear()} Alibha Rani Pradhan | All Rights Reserved
     </Typography>
   </Box>
 );
 
-export default Footer;
+export default Footer;  

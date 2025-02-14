@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { Routes, Route, BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Added BrowserRouter import
 import { ThemeModeProvider } from './components/ThemeModeProvider';
 import { SnackbarProvider } from 'notistack';
 import { CssBaseline, Box, Container } from '@mui/material';
@@ -18,7 +18,7 @@ import QRCodePage from "./components/QRCodePage"; // Import QR Code page
 
 const App = () => {
     return (
-        <Router basename="/your-base-path"> {/* If you're using a subdirectory, set the correct basename */}
+        <Router> {/* Wrap the app with BrowserRouter */}
             <ThemeModeProvider>
                 <CssBaseline />
                 <SnackbarProvider
@@ -39,7 +39,7 @@ const App = () => {
                                 <Route path="/slot-detail/:id" element={<SlotDetail />} />
                                 <Route path="/export" element={<ExportPage />} />
                                 <Route path="/search" element={<SearchPage />} />
-                                <Route path="/qrcodes" element={<QRCodePage />} />
+                                <Route path="/qrcodes" element={<QRCodePage />} /> 
                                 <Route path="*" element={<div>404 - Page Not Found</div>} />
                             </Routes>
                         </Container>
@@ -47,7 +47,7 @@ const App = () => {
                     </Box>
                 </SnackbarProvider>
             </ThemeModeProvider>
-        </Router>
+        </Router>  
     );
 };
 
