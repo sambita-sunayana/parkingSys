@@ -40,7 +40,7 @@ const DetailsSlot = () => {
 
   useEffect(() => {
     axios
-      .get(`https://parkingsystem-8xdu.onrender.com/api/lots/${id}`) // Use correct API
+      .get(`https://parkingsys.onrender.com/api/lots/${id}`) // Use correct API
       .then((res) => {
         setSlot(res.data);
         console.log('slot details', res.data);
@@ -57,7 +57,7 @@ const DetailsSlot = () => {
 
   const handleDeleteConfirm = () => {
     axios
-      .delete(`https://parkingsystem-8xdu.onrender.com/api/lots/${id}`)
+      .delete(`https://parkingsys.onrender.com/api/lots/${id}`)
       .then(() => {
         enqueueSnackbar('Parking slot deleted successfully!', { variant: 'success' });
         navigate('/slots');

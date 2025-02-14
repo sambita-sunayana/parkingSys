@@ -31,7 +31,7 @@ const ParkingHomePage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/slots") // Fetch slots data from backend
+      .get("https://parkingsys.onrender.com/api/lots") // Fetch slots data from backend
       .then((res) => {
         const slots = res.data;
 

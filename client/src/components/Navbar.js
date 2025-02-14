@@ -50,7 +50,7 @@ const Navbar = () => {
           <IconButton
             color="primary"
             component="a"
-            href="https://github.com/alibha04/parkingSystem"
+            href="https://github.com/sambita-sunayana"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -62,7 +62,7 @@ const Navbar = () => {
           <IconButton
             color="primary"
             component="a"
-            href="https://docs.google.com/document/d/1CWyqXhAvyTfxwv0Giqa-ITFZZYGYbootp2S3_bSeOf8/edit?usp=sharing"
+            href="https://docs.google.com/document/d/162aVw8DsXaY9rLekbPG6HrewKXSXQYfIJrUlyx4DZec/edit?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Resume"
@@ -79,7 +79,7 @@ const Navbar = () => {
                     open={Boolean(menuAnchorEl)}
                     onClose={handleMenuClose}
                 >
-                    <MenuItem component={RouterLink} to="/CreateSlot" onClick={handleMenuClose}>
+                    <MenuItem component={RouterLink} to="/CreateSlot.js" onClick={handleMenuClose}>
                         Create Lot
                     </MenuItem>
                     <MenuItem component={RouterLink} to="/list" onClick={handleMenuClose}>

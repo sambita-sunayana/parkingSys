@@ -31,7 +31,7 @@ const SearchSlot = () => {
 
   useEffect(() => {
     axios
-      .get('https://yourapi.com/api/slots') // Change this URL to match your parking system's API
+      .get('https://parkingsys.onrender.com/api/lots') // Change this URL to match your parking system's API
       .then((res) => {
         setSlots(res.data);
         setFilteredSlots(res.data);

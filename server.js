@@ -1,6 +1,6 @@
 const express = require('express');
 const connectDB = require('./config/db.js');  // Database connection
-const parkingLotRoutes = require('./routes/parkingLotRoutes.js'); // Use parking lot routes
+const parkingLotRoutes = require('./routes/parkingLotRoute.js'); // Use parking lot routes
 const cors = require('cors');
 const path = require('path');
 require('dotenv').config({ path: './config.env' });  // Load environment variables
