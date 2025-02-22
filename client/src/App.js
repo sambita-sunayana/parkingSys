@@ -1,10 +1,11 @@
 // src/App.js
-import React from 'react';
+import React, { useState, useMemo } from 'react';  // Added useState and useMemo import
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Added BrowserRouter import
-import { ThemeModeProvider } from './components/ThemeModeProvider';
+import { ThemeProvider } from '@mui/material/styles';  // Added ThemeProvider import from MUI
 import { SnackbarProvider } from 'notistack';
-import { CssBaseline, Box, Container } from '@mui/material';
+import { CssBaseline, Box, Container, Button } from '@mui/material';  // Added Button import from MUI
 
+import { createThemeByMode } from './container/neonGlowTheme';
 import HomePage from './components/HomePage';
 import SlotList from './components/SlotList';  // List of slots
 import SlotDetail from './components/DetailsSlot';  // Detail of a slot
@@ -17,9 +18,20 @@ import SearchPage from './components/SearchSlot';
 import QRCodePage from "./components/QRCodePage"; // Import QR Code page
 
 const App = () => {
+    // State to manage theme mode (dark/light)
+    const [mode, setMode] = useState('dark'); // Default to dark mode
+
+    // Memoize theme for performance optimization
+    const theme = useMemo(() => createThemeByMode(mode), [mode]);
+
+    // Function to toggle between dark and light theme
+    const toggleTheme = () => {
+        setMode((prevMode) => (prevMode === 'dark' ? 'light' : 'dark'));
+    };
+
     return (
-        <Router> {/* Wrap the app with BrowserRouter */}
-            <ThemeModeProvider>
+        <Router>  {/* Wrap the entire app with Router */}
+            <ThemeProvider theme={theme}>  
                 <CssBaseline />
                 <SnackbarProvider
                     maxSnack={3}
@@ -30,7 +42,14 @@ const App = () => {
                 >
                     <Box display="flex" flexDirection="column" minHeight="100vh">
                         <Navbar />
-                        <Container component="main" flex="1" className="box-container">
+                        <Container component="main" flex="1">
+                            {/* Theme Toggle Button */}
+                            <Box display="flex" justifyContent="center" my={2}>
+                                <Button variant="contained" onClick={toggleTheme}>
+                                    Toggle {mode === 'dark' ? 'Light' : 'Dark'} Mode
+                                </Button>
+                            </Box>
+
                             <Routes>
                                 <Route exact path="/" element={<HomePage />} />
                                 <Route path="/slots" element={<SlotList />} />
@@ -39,14 +58,14 @@ const App = () => {
                                 <Route path="/slot-detail/:id" element={<SlotDetail />} />
                                 <Route path="/export" element={<ExportPage />} />
                                 <Route path="/search" element={<SearchPage />} />
-                                <Route path="/qrcodes" element={<QRCodePage />} /> 
+                                <Route path="/qrcodes" element={<QRCodePage />} />
                                 <Route path="*" element={<div>404 - Page Not Found</div>} />
                             </Routes>
                         </Container>
                         <Footer />
                     </Box>
                 </SnackbarProvider>
-            </ThemeModeProvider>
+            </ThemeProvider>
         </Router>  
     );
 };
